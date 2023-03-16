@@ -1,0 +1,8 @@
+empty board two vertical lines and two horzintal 
+clicks/who is wining/tally of how many times ech player has won/which player is clicking.
+event click/if else statements/for and while loops/reset function/function to keep score/
+make the wining message appear only when the game is over 
+array for wining combos 
+everytime someone clicks that cell can no longer be changed
+wanna to check for wins, losses and draws
+
