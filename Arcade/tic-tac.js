@@ -1,5 +1,8 @@
+//getting all of my html elements that I want to affect
+//also setting some variables that will be used for the rest of the game
 let playerText= document.getElementById("playerText");
 const restartButton= document.getElementById("restart");
+//Array.from gets an array like data and turns it into an array 
 const boxes= Array.from(document.getElementsByClassName("cell"));
 const winMessage= document.querySelector(".winning-message");
 const currentPlayerText=document.querySelector(".currentPlayerText")
@@ -15,12 +18,17 @@ const womboCombos=[
 ]
 //winningText.innerHTML="Hello world"
 //console.log(boxs);
-
+//sets the player html
 const circlePlayer="O";
 const xPlayer="X";
 let currentPlayer= xPlayer;
-let spaces= Array(9).fill(null);
-console.log(spaces);
+//makes the cells into an array
+let cells=[
+null, null, null,
+null, null, null,
+null, null, null
+];
+console.log(cells);
 
 
 //event listener for the cells 
@@ -31,12 +39,12 @@ const startGame= () => {
 
 //adds the mark and switches the turn between the players 
 function boxClicked(ev){
-  console.log(ev.target);
+ // console.log(ev.target);
   const ind=ev.target.id;
 
-  if(!spaces[ind]){
-    spaces[ind]=currentPlayer;
-    ev.target.innerText=currentPlayer
+  if(!cells[ind]){
+    cells[ind]=currentPlayer;
+    ev.target.innerText=currentPlayer;
     currentPlayer = currentPlayer == xPlayer ? circlePlayer : xPlayer;
   } 
   currentPlayerText.innerHTML= "It is now"+" "+ currentPlayer+" "+"turn"
@@ -44,8 +52,9 @@ function boxClicked(ev){
 
 //checks result
 function checkResults(){
-  for(let i=0; i<=womboCombos.length; i++){
-    console.log(womboCombos)
+  if(cells[ind]==cells[ind]&& cells[ind]){
+    winMessage.style.display="block";
+    winningText.innerHTML=currentPlayer+" "+"Player Has won";
   }
 }
 
@@ -64,4 +73,4 @@ function restart(){
 restartButton.addEventListener("click", restart)
 
 startGame();
-
+checkResults();
